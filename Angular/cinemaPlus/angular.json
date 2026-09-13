@@ -2,12 +2,11 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm",
-    "analytics": "a2e437e0-2c59-4c46-94c5-7197fd99b1f1"
+    "packageManager": "npm"
   },
   "newProjectRoot": "projects",
   "projects": {
-    "HolaMundo": {
+    "cinemaPlus": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -27,15 +26,7 @@
             ],
             "styles": [
               "src/styles.css"
-            ],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "security": {
-              "allowedHosts": []
-            },
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            ]
           },
           "configurations": {
             "production": {
@@ -65,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "HolaMundo:build:production"
+              "buildTarget": "cinemaPlus:build:production"
             },
             "development": {
-              "buildTarget": "HolaMundo:build:development"
+              "buildTarget": "cinemaPlus:build:development"
             }
           },
           "defaultConfiguration": "development"
