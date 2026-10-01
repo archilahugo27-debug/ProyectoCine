@@ -1,0 +1,54 @@
+<h2>Crear anuncio</h2>
+<form [formGroup]="formulario" (ngSubmit)="guardar()">
+
+    <label>Titulo:</label>
+    <input type="text" formControlName="titulo">
+    @if(formulario.get('titulo')?.invalid && formulario.get('titulo')?.touched){
+    <div>EL titulo es obligatorio</div>
+    }
+    <br><br>
+
+    <label>Descripcion:</label>
+    <input type="text" formControlName="descripcion">
+    @if(formulario.get('descripcion')?.invalid && formulario.get('descripcion')?.touched){
+    <div>La descripcion es obligatoria</div>
+    }
+    <br><br>
+
+    <label>Imagen:</label>
+    <br>
+    <input type="file" (change)="onFileSelected($event)" accept="image/*">
+    <br><br>
+
+    <button type="submit">Guardar</button>
+
+    <h2>Consulta de anuncios:</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Descripcion</th>
+                <th>Fecha Publicacion</th>
+                <th>Imagen</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(anuncio of anuncios; track anuncio.idAnuncio){
+            <tr>
+                <td>{{anuncio.idAnuncio}}</td>
+                <td>{{anuncio.titulo}}</td>
+                <td>{{anuncio.descripcion}}</td>
+                <td>{{anuncio.fechaPublicacion | date}}</td>
+                <td>
+                    @if(anuncio.imagen) {
+                    <img [src]="'data:image/jpeg;base64,' + anuncio.imagen" width="100" alt="Anuncio">
+                    } @else {
+                    <span>Sin imagen</span>
+                    }
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
