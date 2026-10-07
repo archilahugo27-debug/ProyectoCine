@@ -58,4 +58,8 @@ export class Sala {
       }
     );
   }
+
+  consultaAsientos(sala:any){
+    location.href = "asiento/"+sala.idSala;
+  }
 }

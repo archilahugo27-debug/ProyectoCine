@@ -1,0 +1,21 @@
+<p></p>
+<div class="container text">
+    <table class="table table-hover table-striped-columns table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fila</th>
+                <th>Numero</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(asiento of asientos; track asiento.idAsiento){
+            <tr>
+                <td>{{asiento.idAsiento}}</td>
+                <td>{{asiento.fila}}</td>
+                <td>{{asiento.numero}}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
