@@ -36,6 +36,7 @@ export class Login {
   validar(usuario:any){
     if(usuario?.idUsuario){
       location.href = "/bienvenida";
+      localStorage.setItem("usuario", JSON.stringify(usuario));
     } else {
       alert("usuario o contraseña")
     }

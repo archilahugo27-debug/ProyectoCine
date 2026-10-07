@@ -1,0 +1,45 @@
+@if(usuario){
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand">CinemaPlus</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/bienvenida">Bienvenida</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/anuncio">Anuncios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/usuario">Usuarios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/sala">Salas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/genero">Genero</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/clasificacion">Clasificacion</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" (click)="logout()">Log out</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Hola! {{usuario.nombreUsuario}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+}
+@else{
+<div class="container text center">
+  <h1>CinemaPlus</h1>
+  <hr>
+</div>
+}
