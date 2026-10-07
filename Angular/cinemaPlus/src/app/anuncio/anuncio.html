@@ -1,30 +1,85 @@
+<p></p>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/anuncio">Anuncios</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/usuario">Usuarios</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/sala">Salas</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/genero">Generos</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/clasificacion">Clasificaciones</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+<p></p>
 <h2>Crear anuncio</h2>
-<form [formGroup]="formulario" (ngSubmit)="guardar()">
+<div class="container text">
+    <form [formGroup]="formulario" (ngSubmit)="guardar()">
 
-    <label>Titulo:</label>
-    <input type="text" formControlName="titulo">
-    @if(formulario.get('titulo')?.invalid && formulario.get('titulo')?.touched){
-    <div>EL titulo es obligatorio</div>
-    }
-    <br><br>
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Titulo:</label>
+            <div class="col-sm-10">
+                <input type="text" formControlName="titulo" class="form-control">
+                @if(formulario.get('titulo')?.invalid && formulario.get('titulo')?.touched){
+                <div>EL titulo es obligatorio</div>
+                }
+            </div>
+        </div>
 
-    <label>Descripcion:</label>
-    <input type="text" formControlName="descripcion">
-    @if(formulario.get('descripcion')?.invalid && formulario.get('descripcion')?.touched){
-    <div>La descripcion es obligatoria</div>
-    }
-    <br><br>
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Descripcion:</label>
+            <div class="col-sm-10">
+                <input type="text" formControlName="descripcion" class="form-control">
+                @if(formulario.get('descripcion')?.invalid && formulario.get('descripcion')?.touched){
+                <div>La descripcion es obligatoria</div>
+                }
+            </div>
+        </div>
 
-    <label>Imagen:</label>
-    <br>
-    <input type="file" (change)="onFileSelected($event)" accept="image/*">
-    <br><br>
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Imagen:</label>
+            <div class="col-sm-10">
+                <input type="file" (change)="onFileSelected($event)" accept="image/*" class="form-control">
+            </div>
+        </div>
 
-    <button type="submit">Guardar</button>
+        <button type="submit" class="btn btn-success">Guardar</button>
+    </form>
 
     <h2>Consulta de anuncios:</h2>
 
-    <table>
+    <table class="table table-hover table-striped-columns table-bordered">
         <thead>
             <tr>
                 <th>Id</th>
@@ -43,7 +98,7 @@
                 <td>{{anuncio.fechaPublicacion | date}}</td>
                 <td>
                     @if(anuncio.imagen) {
-                    <img [src]="'data:image/jpeg;base64,' + anuncio.imagen" width="100" alt="Anuncio">
+                    <img [src]="'data:image/jpeg;base64,' + anuncio.imagen" width="20%" alt="Anuncio">
                     } @else {
                     <span>Sin imagen</span>
                     }
@@ -52,3 +107,4 @@
             }
         </tbody>
     </table>
+</div>

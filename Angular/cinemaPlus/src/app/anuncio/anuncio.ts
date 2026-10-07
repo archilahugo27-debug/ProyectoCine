@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -19,7 +19,7 @@ export class Anuncio {
   imagenBase64: string | null = null;
   private apiUrl = 'localhost:8080/anuncio';
 
-  constructor(http: HttpClient, private fb: FormBuilder) {
+  constructor(http: HttpClient, private fb: FormBuilder, private chd: ChangeDetectorRef) {
     this.http = http;
     this.formulario = this.fb.group(
       {
@@ -57,21 +57,23 @@ export class Anuncio {
 
   buscarUsuarios() {
     this.http.get("http://localhost:8080/anuncio/buscar").subscribe(
-      data => this.anuncios = data
+      data => {
+        this.anuncios = data
+        this.chd.detectChanges();
+      }
     )
   }
 
   onFileSelected(event: any): void {
-  const file: File = event.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = () => {
-      const result = reader.result as string;
-      const base64String = result.split(',')[1]; 
-      this.imagenBase64 = base64String;
-    };
-    reader.readAsDataURL(file);
+    const file: File = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = reader.result as string;
+        const base64String = result.split(',')[1];
+        this.imagenBase64 = base64String;
+      };
+      reader.readAsDataURL(file);
+    }
   }
-}
-
 }

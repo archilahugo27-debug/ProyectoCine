@@ -1,79 +1,56 @@
-<button onclick="location.href='/anuncio'">Crear anuncios</button>
-<button onclick="location.href='/examen'">Crear examenes</button>
+<div class="text-center p-4">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
 
-<h2>Crear usuario nuevo:</h2>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/anuncio">Anuncios</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
 
-<form [formGroup]="formulario" (ngSubmit)="guardar()">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/usuario">Usuarios</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
 
-    <label>Nombres:</label>
-    <input type="text" formControlName="nombres">
-    @if(formulario.get('nombres')?.invalid && formulario.get('nombres')?.touched){
-    <div>los nombres son obligatorios</div>
-    }
-    <br><br>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/sala">Salas</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
 
-    <label>Apellidos:</label>
-    <input type="text" formControlName="apellidos">
-    @if(formulario.get('apellidos')?.invalid && formulario.get('apellidos')?.touched){
-    <div>Los apellidos son obligatorios</div>
-    }
-    <br><br>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/genero">Generos</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
 
-    <label>Correo:</label>
-    <input type="email" formControlName="correo">
-    @if(formulario.get('correo')?.invalid && formulario.get('correo')?.touched){
-    <div>El correo es obligatorio</div>
-    }
-    <br><br>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/clasificacion">Clasificaciones</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    <p></p>
 
-    <label>Telefono:</label>
-    <input type="text" formControlName="telefono">
-    @if(formulario.get('telefono')?.invalid && formulario.get('telefono')?.touched){
-    <div>El telefono es obligatorio</div>
-    }
-    <br><br>
+    <div class="container text-center">
+        <h2>Bienvenido!</h2>
+    </div>
 
-    <label>Nombre de usuario:</label>
-    <input type="text" formControlName="nombreUsuario">
-    @if(formulario.get('nombreUsuario')?.invalid && formulario.get('nombreUsuario')?.touched){
-    <div>El nombre de usuario es obligatorio</div>
-    }
-    <br><br>
-
-    <label>Contraseña:</label>
-    <input type="password" formControlName="contrasena">
-    @if(formulario.get('contrasena')?.invalid && formulario.get('contrasena')?.touched){
-    <div>La Contraseña es obligatoria</div>
-    }
-    <br><br>
-
-    <button type="submit">Guardar</button>
-
-    <h2>Consulta de usuarios:</h2>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombres</th>
-                <th>Apellidos</th>
-                <th>Correo</th>
-                <th>Telefono</th>
-                <th>Nombre de usuario</th>
-                <th>Contraseña</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for(usuario of usuarios; track usuario.idUsuario){
-            <tr>
-                <td>{{usuario.idUsuario}}</td>
-                <td>{{usuario.nombres}}</td>
-                <td>{{usuario.apellidos}}</td>
-                <td>{{usuario.correo}}</td>
-                <td>{{usuario.telefono}}</td>
-                <td>{{usuario.nombreUsuario}}</td>
-                <td>{{usuario.contrasena}}</td>
-            </tr>
-            }
-        </tbody>
-    </table>
+    <img [src]="'data:image/jpeg;base64,' + imagen64" class="img-fluid rounded" alt="Logo">
+</div>

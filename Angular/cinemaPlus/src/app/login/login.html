@@ -1,16 +1,28 @@
 <p></p>
-<form [formGroup]="formulario" (ngSubmit)="login()">
-    <label>Correo:</label>
-    <input type="email" formControlName="correo">
-    @if(formulario.get('correo')?.invalid && formulario.get('correo')?.touched){
-    <div>El correo es obligatorio</div>
-    }
-    <br><br>
-    <label>Contraseña:</label>
-    <input type="password" formControlName="contrasena">
-    @if(formulario.get('contrasena')?.invalid && formulario.get('contrasena')?.touched){
-    <div>La Contraseña es obligatoria</div>
-    }
-    <br><br>
-    <button type="submit">Ingresar</button>
-</form>
+
+<div class="container text-center">
+    <form [formGroup]="formulario" (ngSubmit)="login()">
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Correo:</label>
+            <div class="col-sm-10">
+                <input type="email" formControlName="correo" class="form-control">
+                @if(formulario.get('correo')?.invalid && formulario.get('correo')?.touched){
+                <div>El correo es obligatorio</div>
+                }
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Contraseña:</label>
+            <div class="col-sm-10">
+                <input type="password" formControlName="contrasena" class="form-control">
+                @if(formulario.get('contrasena')?.invalid && formulario.get('contrasena')?.touched){
+                <div>La Contraseña es obligatoria</div>
+                }
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-info float-end">Ingresar</button>
+    </form>
+</div>

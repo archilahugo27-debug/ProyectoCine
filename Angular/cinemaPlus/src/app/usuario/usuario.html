@@ -1,0 +1,156 @@
+<p></p>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/anuncio">Anuncios</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/usuario">Usuarios</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/sala">Salas</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/genero">Generos</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/clasificacion">Clasificaciones</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+<p></p>
+<h2>Crear usuario nuevo:</h2>
+
+<div class="container text">
+    <form [formGroup]="formulario" (ngSubmit)="guardar()">
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Nombres:</label>
+            <div class="col-sm-10">
+                <input type="text" formControlName="nombres" class="form-control">
+                @if(formulario.get('nombres')?.invalid && formulario.get('nombres')?.touched){
+                <div>los nombres son obligatorios</div>
+                }
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Apellidos:</label>
+            <div class="col-sm-10">
+                <input type="text" formControlName="apellidos" class="form-control">
+                @if(formulario.get('apellidos')?.invalid && formulario.get('apellidos')?.touched){
+                <div>Los apellidos son obligatorios</div>
+                }
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Correo:</label>
+            <div class="col-sm-10">
+                <input type="email" formControlName="correo" class="form-control">
+                @if(formulario.get('correo')?.invalid && formulario.get('correo')?.touched){
+                <div>El correo es obligatorio</div>
+                }
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Telefono:</label>
+            <div class="col-sm-10">
+                <input type="text" formControlName="telefono" class="form-control">
+                @if(formulario.get('telefono')?.invalid && formulario.get('telefono')?.touched){
+                <div>El telefono es obligatorio</div>
+                }
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Nombre de usuario:</label>
+            <div class="col-sm-10">
+                <input type="text" formControlName="nombreUsuario" class="form-control">
+                @if(formulario.get('nombreUsuario')?.invalid && formulario.get('nombreUsuario')?.touched){
+                <div>El nombre de usuario es obligatorio</div>
+                }
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Contraseña:</label>
+            <div class="col-sm-10">
+                <input type="password" formControlName="contrasena" class="form-control">
+                @if(formulario.get('contrasena')?.invalid && formulario.get('contrasena')?.touched){
+                <div>La Contraseña es obligatoria</div>
+                }
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Imagen:</label>
+            <div class="col-sm-10">
+                <input type="file" (change)="onFileSelected($event)" accept="image/*" class="form-control">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success">Guardar</button>
+    </form>
+    <h2>Consulta de usuarios:</h2>
+
+    <table class="table table-hover table-striped-columns table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Correo</th>
+                <th>Telefono</th>
+                <th>Nombre de usuario</th>
+                <th>Contraseña</th>
+                <th>Fotografía</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(usuario of usuarios; track usuario.idUsuario){
+            <tr>
+                <td>{{usuario.idUsuario}}</td>
+                <td>{{usuario.nombres}}</td>
+                <td>{{usuario.apellidos}}</td>
+                <td>{{usuario.correo}}</td>
+                <td>{{usuario.telefono}}</td>
+                <td>{{usuario.nombreUsuario}}</td>
+                <td>{{usuario.contrasena}}</td>
+                <td>
+                    @if(usuario.fotografia) {
+                    <img [src]="'data:image/jpeg;base64,' + usuario.fotografia" width="15%" alt="Perfil">
+                    } @else {
+                    <span>Sin fotografia</span>
+                    }
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
