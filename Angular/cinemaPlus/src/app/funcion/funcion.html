@@ -1,0 +1,87 @@
+<h2>Crear funciones</h2>
+<div class="container text">
+    <form [formGroup]="formulario" (ngSubmit)="guardar()">
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Fecha:</label>
+            <div class="col-sm-10">
+                <input type="date" formControlName="fecha" class="form-control">
+                @if(formulario.get('fecha')?.invalid && formulario.get('fecha')?.touched){
+                <div>La fecha es obligatoria</div>
+                }
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Hora:</label>
+            <div class="col-sm-10">
+                <input type="time" formControlName="hora" class="form-control">
+                @if(formulario.get('hora')?.invalid && formulario.get('hora')?.touched){
+                <div>La fecha es obligatoria</div>
+                }
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Precio de la entrada:</label>
+            <div class="col-sm-10">
+                <input type="number" formControlName="precioEntrada" class="form-control" min="0" step="0.01" placeholder="0.00">
+                @if(formulario.get('precioEntrada')?.invalid && formulario.get('precioEntrada')?.touched){
+                <div>La fecha es obligatoria</div>
+                }
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Pelicula:</label>
+            <div class="col-sm-10">
+                <select class="form-select" aria-label="Default select example" formControlName="idPelicula">
+                    @for (pelicula of peliculas; track pelicula.idPelicula){
+                        <option [value] = "pelicula.idPelicula">
+                            {{pelicula.titulo}}
+                        </option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Sala:</label>
+            <div class="col-sm-10">
+                <select class="form-select" aria-label="Default select example" formControlName="idSala">
+                    @for (sala of salas; track salas.idSala){
+                        <option [value] = "sala.idSala">
+                            {{sala.nombre}}
+                        </option>
+                    }
+                </select>
+            </div>
+        </div>
+    </form>
+
+    <h2>Consulta de funciones:</h2>
+
+    <table class="table table-hover table-striped-columns table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Precio de la entrada</th>
+                <th>Pelicula</th>
+                <th>Sala</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(funcion of funciones; track funcion.idFuncion){
+            <tr>
+                <td>{{funcion.idFuncion}}</td>
+                <td>{{funcion.fecha | date}}</td>
+                <td>{{funcion.hora | date:'HH:mm'}}</td>
+                <td>{{funcion.precioEntrada}}</td>
+                <td>{{funcion.idPelicula}}</td>
+                <td>{{funcion.idSala}}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

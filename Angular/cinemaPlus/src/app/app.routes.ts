@@ -8,6 +8,8 @@ import { Sala } from './sala/sala';
 import { GeneroPelicula } from './genero-pelicula/genero-pelicula';
 import { ClasificacionPelicula } from './clasificacion-pelicula/clasificacion-pelicula';
 import { Asiento } from './asiento/asiento';
+import { Pelicula } from './pelicula/pelicula';
+import { Funcion } from './funcion/funcion';
 
 export const routes: Routes = [
     {path:'', component: Login},
@@ -18,5 +20,7 @@ export const routes: Routes = [
     {path: 'sala', component: Sala},
     {path: 'genero', component: GeneroPelicula},
     {path: 'clasificacion', component: ClasificacionPelicula},
-    {path: 'asiento/:idSala', component: Asiento}
+    {path: 'asiento/:idSala', component: Asiento},
+    {path: 'pelicula', component: Pelicula},
+    {path: 'funcion', component: Funcion}
 ];
