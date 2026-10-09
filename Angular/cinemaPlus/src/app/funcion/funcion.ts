@@ -48,7 +48,7 @@ export class Funcion {
 
   mostrar(funcion: any) {
     if (funcion?.idFuncion) {
-      alert("Pelicula creada con ID: " + funcion.idFuncion)
+      alert("Funcion creada con ID: " + funcion.idFuncion)
     } else {
       alert("Error en el servidor")
     }
