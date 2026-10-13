@@ -1,3 +1,84 @@
+@if(cliente){
 <ion-app>
   <ion-router-outlet></ion-router-outlet>
 </ion-app>
+} @else{
+<ion-card>
+  <img alt="Logo" src="assets\images.jpg" />
+  <ion-card-header>
+    <ion-card-title>CinemaPlus</ion-card-title>
+    <ion-card-subtitle>Iniciar sesión</ion-card-subtitle>
+  </ion-card-header>
+
+  @if(crearCuenta){
+  <ion-card-content>
+    <ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-input label="Nombres:" [(ngModel)]="clienteNuevo.nombres"
+            placeholder="Nombre"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Apellidos:" [(ngModel)]="clienteNuevo.apellidos"
+            placeholder="Apellidos"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="NIT:" [(ngModel)]="clienteNuevo.nit"
+            placeholder="NIT"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Correo:" [(ngModel)]="clienteNuevo.correo" type="email"
+            placeholder="ejemplo@domain.com"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Contraseña" [(ngModel)]="clienteNuevo.contrasena" type="password"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Telefono:" [(ngModel)]="clienteNuevo.telefono"
+            placeholder="xxxx-xxxx"></ion-input>
+        </ion-item>
+
+        <ion-button size="small" color="success" (click)="crearCliente()">
+          <ion-icon name="checkmark-done"></ion-icon>
+          Crear Usuario
+        </ion-button>
+
+
+      </ion-list>
+    </ion-list>
+  </ion-card-content>
+  } @else {
+  <ion-card-content>
+    <ion-list>
+      <ion-list>
+
+        <ion-item>
+          <ion-input label="Correo:" [(ngModel)]="clienteLogin.correo" type="email"
+            placeholder="ejemplo@domain.com"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Contraseña" [(ngModel)]="clienteLogin.contrasena" type="password"></ion-input>
+        </ion-item>
+
+        <ion-button size="small" color="success" (click)="login()">
+          <ion-icon name="checkmark-done"></ion-icon>
+          Ingresar
+        </ion-button>
+
+        <ion-button size="small" color="warning" (click)="crearCuentaBtn()">
+          Crear Usuario
+          <ion-icon name="person-add"></ion-icon>
+        </ion-button>
+
+      </ion-list>
+    </ion-list>
+  </ion-card-content>
+  }
+</ion-card>
+}
