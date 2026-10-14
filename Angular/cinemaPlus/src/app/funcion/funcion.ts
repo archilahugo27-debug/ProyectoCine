@@ -37,7 +37,7 @@ export class Funcion {
 
   guardar() {
     if (this.formulario.valid) {
-      this.http.post("http://localhost:8080/pelicula/guardar", this.formulario.value).subscribe(
+      this.http.post("http://localhost:8080/funcion/guardar", this.formulario.value).subscribe(
         fun => this.mostrar(fun)
       )
 

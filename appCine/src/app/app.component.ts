@@ -5,7 +5,7 @@ import {
 } from '@ionic/angular';
 
 import { addIcons } from 'ionicons';
-import { checkmarkDone, personAdd } from 'ionicons/icons';
+import { checkmarkDone, personAdd, close } from 'ionicons/icons';
 
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -14,9 +14,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  imports: [IonApp, IonRouterOutlet, IonCard, IonCardContent, IonCardHeader,
-    IonCardSubtitle, IonCardTitle, IonInput, IonItem, IonList, IonButton, IonIcon,
-    FormsModule, CommonModule],
+  imports: [IonApp, IonRouterOutlet, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonInput, IonItem, IonList, IonButton, IonIcon, FormsModule, CommonModule],
 })
 export class AppComponent {
   cliente: any = null;
@@ -28,7 +26,7 @@ export class AppComponent {
 
   constructor(http: HttpClient, private chd: ChangeDetectorRef) {
     this.http = http;
-    addIcons({ checkmarkDone, personAdd });
+    addIcons({ checkmarkDone, personAdd, close });
   }
 
   login() {
@@ -74,5 +72,9 @@ export class AppComponent {
     } else {
       alert("Error en el servidor")
     }
+  }
+
+  cancelar(){
+    this.crearCuenta = false;
   }
 }

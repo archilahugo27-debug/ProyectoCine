@@ -1,17 +1,59 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Funciones
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
+  @if(reserva){
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Reservación</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <br>
+  <ion-button size="small" color="warning" (click)="cancelar()">
+    Cancelar
+    <ion-icon name="close"></ion-icon>
+  </ion-button>
+
+  } @else {
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Funciones</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>No</ion-label>
+      <ion-label>Pelicula</ion-label>
+      <ion-label>Sala</ion-label>
+      <ion-label>Fecha</ion-label>
+      <ion-label>Hora</ion-label>
+      <ion-label>Precio entrada</ion-label>
+    </ion-item>
+    @for(funcion of funciones; track funcion.idFuncion){
+    <ion-item>
+      <ion-label>{{funcion.idFuncion}}</ion-label>
+      <ion-label>{{funcion.idPelicula}}</ion-label>
+      <ion-label>{{funcion.idSala}}</ion-label>
+      <ion-label>{{funcion.fecha | date}}</ion-label>
+      <ion-label>{{funcion.hora}}</ion-label>
+      <ion-label>{{funcion.precioEntrada}}</ion-label>
+    </ion-item>
+    }
+
+  </ion-list>
+
+  <br>
+  <ion-button size="small" color="success" (click)="reservacion()">
+    Reservar
+    <ion-icon name="ticket-outline"></ion-icon>
+  </ion-button>
+  }
 </ion-content>

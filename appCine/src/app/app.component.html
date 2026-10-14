@@ -15,18 +15,15 @@
     <ion-list>
       <ion-list>
         <ion-item>
-          <ion-input label="Nombres:" [(ngModel)]="clienteNuevo.nombres"
-            placeholder="Nombre"></ion-input>
+          <ion-input label="Nombres:" [(ngModel)]="clienteNuevo.nombres" placeholder="Nombre"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input label="Apellidos:" [(ngModel)]="clienteNuevo.apellidos"
-            placeholder="Apellidos"></ion-input>
+          <ion-input label="Apellidos:" [(ngModel)]="clienteNuevo.apellidos" placeholder="Apellidos"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input label="NIT:" [(ngModel)]="clienteNuevo.nit"
-            placeholder="NIT"></ion-input>
+          <ion-input label="NIT:" [(ngModel)]="clienteNuevo.nit" placeholder="NIT"></ion-input>
         </ion-item>
 
         <ion-item>
@@ -39,15 +36,19 @@
         </ion-item>
 
         <ion-item>
-          <ion-input label="Telefono:" [(ngModel)]="clienteNuevo.telefono"
-            placeholder="xxxx-xxxx"></ion-input>
+          <ion-input label="Telefono:" [(ngModel)]="clienteNuevo.telefono" placeholder="xxxx-xxxx"></ion-input>
         </ion-item>
 
+        <br>
         <ion-button size="small" color="success" (click)="crearCliente()">
           <ion-icon name="checkmark-done"></ion-icon>
           Crear Usuario
         </ion-button>
 
+        <ion-button size="small" color="danger" (click)="cancelar()">
+          Cancelar
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
 
       </ion-list>
     </ion-list>
@@ -66,6 +67,8 @@
           <ion-input label="Contraseña" [(ngModel)]="clienteLogin.contrasena" type="password"></ion-input>
         </ion-item>
 
+        
+        <br>
         <ion-button size="small" color="success" (click)="login()">
           <ion-icon name="checkmark-done"></ion-icon>
           Ingresar
