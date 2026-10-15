@@ -80,8 +80,20 @@
                 <td>{{funcion.fecha | date}}</td>
                 <td>{{funcion.hora}}</td>
                 <td>{{funcion.precioEntrada}}</td>
-                <td>{{funcion.idPelicula}}</td>
-                <td>{{funcion.idSala}}</td>
+                <td>
+                    @for(pelicula of peliculas; track pelicula.idPelicula){
+                        @if(funcion.idPelicula == pelicula.idPelicula){
+                            {{pelicula.titulo}}
+                        }
+                    }
+                </td>
+                <td>
+                    @for(sala of salas; track sala.idSala){
+                        @if(funcion.idSala == sala.idSala){
+                            {{sala.nombre}}
+                        }
+                    }
+                </td>
             </tr>
             }
         </tbody>

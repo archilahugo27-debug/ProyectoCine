@@ -96,8 +96,20 @@
                     <span>Sin imagen</span>
                     }
                 </td>
-                <td>{{pelicula.idGenero}}</td>
-                <td>{{pelicula.idClasificacion}}</td>
+                <td>
+                    @for(genero of generos; track genero.idGenero){
+                        @if(pelicula.idGenero == genero.idGenero){
+                            {{genero.nombre}}
+                        }
+                    }
+                </td>
+                <td>
+                    @for(clasificacion of clasificaciones; track clasificacion.idClasificacion){
+                        @if(pelicula.idClasificacion == clasificacion.idClasificacion){
+                            {{clasificacion.nombre}}
+                        }
+                    }
+                </td>
             </tr>
             }
         </tbody>

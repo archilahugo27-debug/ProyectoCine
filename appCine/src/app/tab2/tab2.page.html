@@ -15,11 +15,102 @@
     </ion-toolbar>
   </ion-header>
 
+  @if(reservado){
+  <ion-item>
+    <ion-label>Funcion</ion-label>
+    <ion-label>No Entradas</ion-label>
+    <ion-label>Total a pagar</ion-label>
+    <ion-label>Fecha de reserva</ion-label>
+  </ion-item>
+  <ion-list>
+    @for(reserva of reservas; track reserva.idReserva){
+    @if(reserva.idCliente == cliente.idcliente){
+      <ion-item>
+      <ion-label>
+        @for(funcion of funciones; track funcion.idFuncion){
+        @if(reserva.idFuncion == funcion.idFuncion){
+        @for(pelicula of peliculas; track pelicula.idPelicula){
+        @if(funcion.idPelicula == pelicula.idPelicula){
+        {{pelicula.titulo}}
+        }
+        }
+        |
+        @for(sala of salas; track sala.idSala){
+        @if(funcion.idSala == sala.idSala){
+        {{sala.nombre}}
+        }
+        }
+        }
+        }
+      </ion-label>
+      <ion-label>{{reserva.cantidadEntradas}}</ion-label>
+      <ion-label>{{reserva.totalAPagar}}</ion-label>
+      <ion-label>{{reserva.fechaReserva | date}}</ion-label>
+    </ion-item>
+    }
+    }
+  </ion-list>
+
   <br>
+  <ion-button size="small" color="warning" (click)="volver()">
+    Volver
+    <ion-icon name="close"></ion-icon>
+  </ion-button>
+
+  } @else {
+  <ion-list>
+    <ion-list>
+
+      <ion-item>
+        <ion-input label="Número de entradas:" type="number" placeholder="000"
+          [(ngModel)]="reservaNueva.cantidadEntradas"></ion-input>
+      </ion-item>
+
+      <ion-list>
+        <ion-item>
+          <ion-select placeholder="Pelicula | Sala | Fecha | Hora" [(ngModel)]="reservaNueva.idFuncion">
+            <div slot="label">Funciones</div>
+            @for(funcion of funciones; track funcion.idFuncion){
+            <ion-select-option [value]="funcion.idFuncion">
+              @for(pelicula of peliculas; track pelicula.idPelicula){
+              @if(funcion.idPelicula == pelicula.idPelicula){
+              {{pelicula.titulo}}
+              }
+              }
+              |
+              @for(sala of salas; track sala.idSala){
+              @if(funcion.idSala == sala.idSala){
+              {{sala.nombre}}
+              }
+              }
+              |
+              {{funcion.fecha | date}}
+              |
+              {{funcion.hora}}
+            </ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-list>
+  </ion-list>
+
+  <br>
+  <ion-button size="small" color="success" (click)="guardarReserva()">
+    Guardar
+    <ion-icon name="checkmark-done"></ion-icon>
+  </ion-button>
+
   <ion-button size="small" color="warning" (click)="cancelar()">
     Cancelar
     <ion-icon name="close"></ion-icon>
   </ion-button>
+
+  <ion-button size="small" color="tertiary" (click)="verReserva()">
+    Reservas
+    <ion-icon name="cash-outline"></ion-icon>
+  </ion-button>
+  }
 
   } @else {
   <ion-header collapse="condense">
@@ -40,8 +131,20 @@
     @for(funcion of funciones; track funcion.idFuncion){
     <ion-item>
       <ion-label>{{funcion.idFuncion}}</ion-label>
-      <ion-label>{{funcion.idPelicula}}</ion-label>
-      <ion-label>{{funcion.idSala}}</ion-label>
+      <ion-label>
+        @for(pelicula of peliculas; track pelicula.idPelicula){
+        @if(funcion.idPelicula == pelicula.idPelicula){
+        {{pelicula.titulo}}
+        }
+        }
+      </ion-label>
+      <ion-label>
+        @for(sala of salas; track sala.idSala){
+        @if(funcion.idSala == sala.idSala){
+        {{sala.nombre}}
+        }
+        }
+      </ion-label>
       <ion-label>{{funcion.fecha | date}}</ion-label>
       <ion-label>{{funcion.hora}}</ion-label>
       <ion-label>{{funcion.precioEntrada}}</ion-label>
